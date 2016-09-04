@@ -1,0 +1,33 @@
+{
+  "name": "credit-card-validation",
+  "version": "1.0.0",
+  "description": "a credit card validator",
+  "main": "index.js",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-polyfill": "^6.13.0",
+    "babel-register": "^6.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Marten790/credit-card-validation.git"
+  },
+  "keywords": [
+    "credit",
+    "card",
+    "validator",
+    "visa",
+    "master",
+    "card"
+  ],
+  "author": "Marten Terblanche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Marten790/credit-card-validation/issues"
+  },
+  "homepage": "https://gitlab.com/Marten790/credit-card-validation#README"
+}
