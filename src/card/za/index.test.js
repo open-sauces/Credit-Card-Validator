@@ -1,9 +1,22 @@
-const chai = require('chai').expect;
+"use strict";
 
-describe('Arithmetic', () => {
-  it('should calculate 1 + 1 correctly', () => {
-    const expectedResult = 1;
+//Variables
+  const one = 1;
 
-    expect(1 + 1).to.equal(expectedResult);
+
+
+//Functions
+  function plusTwo (a, b) {
+    return a + b
+  }; 
+
+
+
+
+
+//Tests
+  describe('plusTwo()', () => {
+    it('1 + 1 = 2', () => {
+      expect(plusTwo(one, one)).toEqual(2);
+    });
   });
-});
