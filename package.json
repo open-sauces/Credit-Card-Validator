@@ -6,11 +6,17 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
     "babel-register": "^6.14.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine-core": "^2.5.0",
+    "karma": "^1.2.0",
+    "karma-babel-preprocessor": "^6.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ".src/**/*.js",
+    "postinstall": "./node_modules/.bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +30,7 @@
     "master",
     "card"
   ],
-  "author": "Marten Terblanche",
+  "author": "@marten790",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/Marten790/credit-card-validation/issues"
