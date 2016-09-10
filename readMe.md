@@ -3,7 +3,7 @@ Run *npm install* from root
 
 ## Unit test run from root
 ```javascript
-⋅⋅*./node_modules/.bin/karma start karma.conf.js
+⋅⋅* ./node_modules/.bin/karma start karma.conf.js
 ```
 
 ## How the Credit Card Validator works.

@@ -17,33 +17,43 @@
 
   let lastNumberOnCard = getLast(VISA);
   let cardWithoutLastNumber = removeLast(VISA);
+  let cardInReverseOrder = reverseOrder(VISA);
+  // let getOdd = getOddIndex(cardInReverseOrder);
 
 
-
-
-
-
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
-  // let stepOne = getLast(VISA);
 
 
 //Functions
   function getLast(a){return Number(String(a).slice(-1))};
   function removeLast(a){return Number(String(a).slice(0, -1))};
-  function reverseOrder(){};
-  function getOdd(){};
-  function multiplyByTwo(){};
-  function checkIfMoreThenNine(){};
-  function addAll(){};
-  function validateModulo(){};
+  function reverseOrder(a) {return Number(Array.from(String(a)).reverse().join(''));};
+  function getOddIndex(value) {
+    let splitNumber =  String(value).split('');
+    var oddOnes = [],
+     evenOnes = [];
+    var number = splitNumber;
+    for(var i=0; i<number.length; i++)
+    (i % 2 == 0 ? evenOnes : oddOnes).push(number[i]);
+        return Number(evenOnes.join(''));
+  }
+
+  function arrayItemsMultiply(value){
+    let splitNumber =  String(value).split('');
+    let calculated = splitNumber.map(function(item){
+      item = Number(item) * 2;
+      if(Number(item) >= 9){
+        item = item - 9;
+      }
+      return item;
+    })
+    return Number(calculated.join(''));
+  }
+
+  function addAll(value){
+    let splitNumber =  String(value).split('');
+    let total = splitNumber.reduce((a, b) => a + Number(b), 0);
+    return Number(total);
+  };
 
   //helpers
 
@@ -51,22 +61,52 @@
   //.slice(-1)
   //String(a)
   //Number(a)
-
+  //The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.
+  // /The call() method calls a function with a given this value and arguments provided individually.
 
 
 
 //Tests
-  let testVisa = 4343667061053553;
+  let testVisaComplete    = 4343667061053553;
+  let testVisaWithoutLast = 434366706105355;
+  let visaInReverse = 553501607663434;
+  let visaOddIndexNumber = 53067644;
+  let workedOutMaths = 16035388;
 
   describe('getLast()', () => {
     it('Get last character of string and returns a number', () => {
-      expect(getLast(testVisa)).toEqual(3);
+      expect(getLast(testVisaComplete)).toEqual(3);
     });
   });
 
   describe('removeLast()', () => {
     it('Remove last character of string and returns a number', () => {
-      expect(removeLast(testVisa)).toEqual(434366706105355);
+      expect(removeLast(testVisaComplete)).toEqual(434366706105355);
+    });
+  });
+
+  describe('reverseOrder()', () => {
+    it('Reverse the order of the passed in string', () => {
+      expect(reverseOrder(testVisaWithoutLast)).toEqual(553501607663434);
+    });
+  });
+
+
+  describe('getOddIndex()', () => {
+    it('gets the odd index values in given string', () => {
+      expect(getOddIndex(visaInReverse)).toEqual(53067644);
+    });
+  });
+
+  describe('arrayItemsMultiply()', () => {
+    it('Multiply the digits in odd positions by 2 and subtract 9 to all any result higher than 9', () => {
+      expect(arrayItemsMultiply(visaOddIndexNumber)).toEqual(16035388);
+    });
+  });
+
+  describe('addAll()', () => {
+    it('Add all numbers', () => {
+      expect(addAll(workedOutMaths)).toEqual(34);
     });
   });
 //Steps:
