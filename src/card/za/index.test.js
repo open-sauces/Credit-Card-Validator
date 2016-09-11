@@ -18,7 +18,7 @@
   let lastNumberOnCard = getLast(VISA);
   let cardWithoutLastNumber = removeLast(VISA);
   let cardInReverseOrder = reverseOrder(VISA);
-  // let getOdd = getOddIndex(cardInReverseOrder);
+  // let getOdd = getOddEvenIndex(cardInReverseOrder);
 
 
 
@@ -27,21 +27,21 @@
   function getLast(a){return Number(String(a).slice(-1))};
   function removeLast(a){return Number(String(a).slice(0, -1))};
   function reverseOrder(a) {return Number(Array.from(String(a)).reverse().join(''));};
-  function getOddIndex(value) {
+  function getOddEvenIndex(value) {
     let splitNumber =  String(value).split('');
     var oddOnes = [],
      evenOnes = [];
     var number = splitNumber;
     for(var i=0; i<number.length; i++)
     (i % 2 == 0 ? evenOnes : oddOnes).push(number[i]);
-        return Number(evenOnes.join(''));
+        return [Number(oddOnes.join('')), Number(evenOnes.join(''))];
   }
 
   function arrayItemsMultiply(value){
     let splitNumber =  String(value).split('');
     let calculated = splitNumber.map(function(item){
       item = Number(item) * 2;
-      if(Number(item) >= 9){
+      if(Number(item) >= 10){
         item = item - 9;
       }
       return item;
@@ -49,11 +49,24 @@
     return Number(calculated.join(''));
   }
 
-  function addAll(value){
-    let splitNumber =  String(value).split('');
-    let total = splitNumber.reduce((a, b) => a + Number(b), 0);
+  function addAll(a, b){
+    let splitNumber =  String(a).split('');
+    let numberA =  String(a).split('');
+    let numberB =  String(b).split('');
+    Array.prototype.push.apply(numberA, numberB);
+    // var total = sports.push('football', 'swimming');
+    // console.log(numberB);
+    let total = numberA.reduce((a, b) => a + Number(b), 0);
+    console.log(Number(total));
     return Number(total);
   };
+
+  function moduloTen(value){
+    return value % 10;
+  }
+  function comparison(a, b){
+    return a === b ? true : false;
+  }
 
   //helpers
 
@@ -67,11 +80,15 @@
 
 
 //Tests
+  let lastCharacterOnCard = 3;
   let testVisaComplete    = 4343667061053553;
   let testVisaWithoutLast = 434366706105355;
   let visaInReverse = 553501607663434;
-  let visaOddIndexNumber = 53067644;
-  let workedOutMaths = 16035388;
+  let visaOddIndexNumber = [ 5510633, 53067644 ];
+  let workedOutMaths = 1120366;
+  let allNumbersAdded = 54;
+  let moduloTenCalc = 4;
+
 
   describe('getLast()', () => {
     it('Get last character of string and returns a number', () => {
@@ -92,21 +109,33 @@
   });
 
 
-  describe('getOddIndex()', () => {
-    it('gets the odd index values in given string', () => {
-      expect(getOddIndex(visaInReverse)).toEqual(53067644);
+  describe('getOddEvenIndex()', () => {
+    it('gets the even index values in given string', () => {
+      expect(getOddEvenIndex(visaInReverse)).toEqual([ 5510633, 53067644 ]);
     });
   });
 
   describe('arrayItemsMultiply()', () => {
     it('Multiply the digits in odd positions by 2 and subtract 9 to all any result higher than 9', () => {
-      expect(arrayItemsMultiply(visaOddIndexNumber)).toEqual(16035388);
+      expect(arrayItemsMultiply(visaOddIndexNumber[0])).toEqual(1120366);
     });
   });
 
   describe('addAll()', () => {
     it('Add all numbers', () => {
-      expect(addAll(workedOutMaths)).toEqual(34);
+      expect(addAll(workedOutMaths, visaOddIndexNumber[1])).toEqual(54);
+    });
+  });
+
+  describe('moduloTen()', () => {
+    it('Module is used to get the remainder after integer division', () => {
+      expect(moduloTen(allNumbersAdded)).toEqual(9);
+    });
+  });
+
+  describe('comparison()', () => {
+    it('Strictly compares 2 given values to eachother', () => {
+      expect(comparison(moduloTenCalc, lastCharacterOnCard)).toEqual(true);
     });
   });
 //Steps:
