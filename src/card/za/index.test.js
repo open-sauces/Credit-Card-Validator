@@ -1,7 +1,7 @@
 "use strict";
 
 //Variables
-  const VISA = 4343667061053553;
+  const VISA = 4556737586899855;
   const MASTERCARD = 5483860808597696;
   const AMERICANEXPRESS = 349973529889097;
   const DISCOVER = 6011629506225960;
@@ -9,9 +9,28 @@
   const VISAELECTRON = 4508405849060314;
   const MAESTRO = 0604215418083568;
 
-  const TESTCARD = 4343667061053553;
+  const TESTCARD = 4556737586899855;
 
 
+
+  function validateCard(cardToTest){
+    console.log(cardToTest);
+    const lastNumber = getLast(cardToTest);
+
+    return comparison(
+            moduloTen(
+              addAll(arrayItemsMultiply(getOddEvenIndex(reverseOrder(removeLast(cardToTest)))[1]), getOddEvenIndex(reverseOrder(removeLast(cardToTest)))[0])
+            ), lastNumber
+          );
+  }
+
+  console.log(validateCard(VISAELECTRON));
+
+// function validateCard(cardToTest){
+//   return comparison(moduloTen(addAll(arrayItemsMultiply(getOddEvenIndex(reverseOrder(removeLast(cardToTest)))))));
+// }
+//
+// console.log(validateCard(TESTCARD));
 
 //Calculations
 
@@ -41,7 +60,7 @@
     let splitNumber =  String(value).split('');
     let calculated = splitNumber.map(function(item){
       item = Number(item) * 2;
-      if(Number(item) >= 10){
+      if(Number(item) >= 9){
         item = item - 9;
       }
       return item;
@@ -55,9 +74,7 @@
     let numberB =  String(b).split('');
     Array.prototype.push.apply(numberA, numberB);
     // var total = sports.push('football', 'swimming');
-    // console.log(numberB);
     let total = numberA.reduce((a, b) => a + Number(b), 0);
-    console.log(Number(total));
     return Number(total);
   };
 
@@ -80,56 +97,61 @@
 
 
 //Tests
-  let lastCharacterOnCard = 3;
-  let testVisaComplete    = 4343667061053553;
-  let testVisaWithoutLast = 434366706105355;
-  let visaInReverse = 553501607663434;
-  let visaOddIndexNumber = [ 5510633, 53067644 ];
-  let workedOutMaths = 1120366;
-  let allNumbersAdded = 54;
-  let moduloTenCalc = 4;
+  let lastCharacterOnCard = 5;
+  let testVisaComplete    = 4556737586899855;
+  let testVisaWithoutLast = 455673758689985;
+  let visaInReverse = 589986857376554;
+  let visaEvenOddIndexNumber = [ 8965365, 59887754 ];
+  let workedOutMaths = 19775518;
+  let allNumbersAdded = 85;
+  let moduloTenCalc = 5;
+
+
+
+
+
 
 
   describe('getLast()', () => {
     it('Get last character of string and returns a number', () => {
-      expect(getLast(testVisaComplete)).toEqual(3);
+      expect(getLast(testVisaComplete)).toEqual(5);
     });
   });
 
   describe('removeLast()', () => {
     it('Remove last character of string and returns a number', () => {
-      expect(removeLast(testVisaComplete)).toEqual(434366706105355);
+      expect(removeLast(testVisaComplete)).toEqual(455673758689985);
     });
   });
 
   describe('reverseOrder()', () => {
     it('Reverse the order of the passed in string', () => {
-      expect(reverseOrder(testVisaWithoutLast)).toEqual(553501607663434);
+      expect(reverseOrder(testVisaWithoutLast)).toEqual(589986857376554);
     });
   });
 
 
   describe('getOddEvenIndex()', () => {
     it('gets the even index values in given string', () => {
-      expect(getOddEvenIndex(visaInReverse)).toEqual([ 5510633, 53067644 ]);
+      expect(getOddEvenIndex(visaInReverse)).toEqual([ 8965365, 59887754 ]);
     });
   });
 
   describe('arrayItemsMultiply()', () => {
     it('Multiply the digits in odd positions by 2 and subtract 9 to all any result higher than 9', () => {
-      expect(arrayItemsMultiply(visaOddIndexNumber[0])).toEqual(1120366);
+      expect(arrayItemsMultiply(visaEvenOddIndexNumber[1])).toEqual(19775518);
     });
   });
 
   describe('addAll()', () => {
     it('Add all numbers', () => {
-      expect(addAll(workedOutMaths, visaOddIndexNumber[1])).toEqual(54);
+      expect(addAll(workedOutMaths, visaEvenOddIndexNumber[0])).toEqual(85);
     });
   });
 
   describe('moduloTen()', () => {
     it('Module is used to get the remainder after integer division', () => {
-      expect(moduloTen(allNumbersAdded)).toEqual(9);
+      expect(moduloTen(allNumbersAdded)).toEqual(5);
     });
   });
 
