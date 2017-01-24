@@ -1,0 +1,39 @@
+{
+  "name": "credit-card-validation",
+  "version": "0.0.1",
+  "description": "a credit card validator",
+  "main": "index.js",
+  "directories": {
+    "src": "src"
+  },
+  "scripts": {
+    "src": "./src/card/za/index.test.js",
+    "postinstall": "./node_modules/.bin/karma start karma.conf.js"
+  },
+  "dependencies": {
+    "karma": "latest"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Marten790/credit-card-validation.git"
+  },
+  "keywords": [
+    "credit",
+    "card",
+    "validator",
+    "visa",
+    "master",
+    "card"
+  ],
+  "author": "@marten790",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Marten790/credit-card-validation/issues"
+  },
+  "homepage": "https://gitlab.com/Marten790/credit-card-validation#README"
+}
