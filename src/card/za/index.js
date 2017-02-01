@@ -1,4 +1,6 @@
-const VideoDetail = () => {
-		return	console.log('something');
-};
-export default VideoDetail;
+
+var module = {
+	exports: {
+				console.log('something');
+		}
+}
