@@ -2,27 +2,28 @@
 // Generated on Sat May 31 2014 02:02:26 GMT+0800 (PHT)
 
 module.exports = function(config) {
+
   config.set({
+   loader: 'babel-loader',
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
         'src/card/za/index.test.js'
     ],
 
-
-    plugins : [ // !IMPORTANT
+    test:  'src/card/za/index.js',
+    plugins : [
+      // !IMPORTANT
             'karma-chrome-launcher',
-            'karma-jasmine']
-    ,
+            'karma-jasmine'
+          ],
 
     // list of files to exclude
     exclude: [

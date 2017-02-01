@@ -1,5 +1,9 @@
 "use strict";
 
+import test from './index';
+
+console.log('test', test);
+
 //Variables
   const VISA = 4556737586899855;
   const MASTERCARD = 5483860808597696;
@@ -38,8 +42,6 @@
   let cardWithoutLastNumber = removeLast(VISA);
   let cardInReverseOrder = reverseOrder(VISA);
   // let getOdd = getOddEvenIndex(cardInReverseOrder);
-
-
 
 
 //Functions
