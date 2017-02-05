@@ -1,8 +1,3 @@
-"use strict";
-
-import test from './index';
-
-console.log('test', test);
 
 //Variables
   const VISA = 4556737586899855;
@@ -11,14 +6,14 @@ console.log('test', test);
   const DISCOVER = 6011629506225960;
   const JCB = 3528216329036270;
   const VISAELECTRON = 4508405849060314;
-  const MAESTRO = 0604215418083568;
+  // const MAESTRO = 0604215418083568;
 
   const TESTCARD = 4556737586899855;
 
 
 
   function validateCard(cardToTest){
-    console.log(cardToTest);
+    console.log('Card being tested', cardToTest);
     const lastNumber = getLast(cardToTest);
 
     return comparison(
@@ -28,7 +23,7 @@ console.log('test', test);
           );
   }
 
-  console.log(validateCard(VISAELECTRON));
+  console.log('Your card is valid? - ', validateCard(VISA));
 
 // function validateCard(cardToTest){
 //   return comparison(moduloTen(addAll(arrayItemsMultiply(getOddEvenIndex(reverseOrder(removeLast(cardToTest)))))));
@@ -87,81 +82,8 @@ console.log('test', test);
     return a === b ? true : false;
   }
 
-  //helpers
-
-  //String(a)
-  //.slice(-1)
-  //String(a)
-  //Number(a)
-  //The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.
-  // /The call() method calls a function with a given this value and arguments provided individually.
 
 
-
-//Tests
-  let lastCharacterOnCard = 5;
-  let testVisaComplete    = 4556737586899855;
-  let testVisaWithoutLast = 455673758689985;
-  let visaInReverse = 589986857376554;
-  let visaEvenOddIndexNumber = [ 8965365, 59887754 ];
-  let workedOutMaths = 19775518;
-  let allNumbersAdded = 85;
-  let moduloTenCalc = 5;
-
-
-
-
-
-
-
-  describe('getLast()', () => {
-    it('Get last character of string and returns a number', () => {
-      expect(getLast(testVisaComplete)).toEqual(5);
-    });
-  });
-
-  describe('removeLast()', () => {
-    it('Remove last character of string and returns a number', () => {
-      expect(removeLast(testVisaComplete)).toEqual(455673758689985);
-    });
-  });
-
-  describe('reverseOrder()', () => {
-    it('Reverse the order of the passed in string', () => {
-      expect(reverseOrder(testVisaWithoutLast)).toEqual(589986857376554);
-    });
-  });
-
-
-  describe('getOddEvenIndex()', () => {
-    it('gets the even index values in given string', () => {
-      expect(getOddEvenIndex(visaInReverse)).toEqual([ 8965365, 59887754 ]);
-    });
-  });
-
-  describe('arrayItemsMultiply()', () => {
-    it('Multiply the digits in odd positions by 2 and subtract 9 to all any result higher than 9', () => {
-      expect(arrayItemsMultiply(visaEvenOddIndexNumber[1])).toEqual(19775518);
-    });
-  });
-
-  describe('addAll()', () => {
-    it('Add all numbers', () => {
-      expect(addAll(workedOutMaths, visaEvenOddIndexNumber[0])).toEqual(85);
-    });
-  });
-
-  describe('moduloTen()', () => {
-    it('Module is used to get the remainder after integer division', () => {
-      expect(moduloTen(allNumbersAdded)).toEqual(5);
-    });
-  });
-
-  describe('comparison()', () => {
-    it('Strictly compares 2 given values to eachother', () => {
-      expect(comparison(moduloTenCalc, lastCharacterOnCard)).toEqual(true);
-    });
-  });
 //Steps:
 //Drop the last digit from the number. The last digit is what we want to check against
 //Reverse the numbers
