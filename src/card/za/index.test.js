@@ -1,3 +1,10 @@
+// VISA:
+// 4556197518505296 - true
+// 4539991607481548 - false
+// 4929786148583630 - true
+
+
+
 
 //Variables
   const VISA = 4556737586899855;
@@ -10,8 +17,6 @@
 
   const TESTCARD = 4556737586899855;
 
-
-
   function validateCard(cardToTest){
     console.log('Card being tested', cardToTest);
     const lastNumber = getLast(cardToTest);
@@ -23,19 +28,13 @@
           );
   }
 
-  console.log('Your card is valid? - ', validateCard(VISA));
-
-// function validateCard(cardToTest){
-//   return comparison(moduloTen(addAll(arrayItemsMultiply(getOddEvenIndex(reverseOrder(removeLast(cardToTest)))))));
-// }
-//
-// console.log(validateCard(TESTCARD));
+  console.log('Was your card valid? - ', validateCard(4539991607481548));
 
 //Calculations
 
-  let lastNumberOnCard = getLast(VISA);
-  let cardWithoutLastNumber = removeLast(VISA);
-  let cardInReverseOrder = reverseOrder(VISA);
+  let lastNumberOnCard = getLast(4539991607481548);
+  let cardWithoutLastNumber = removeLast(4539991607481548);
+  let cardInReverseOrder = reverseOrder(4539991607481548);
   // let getOdd = getOddEvenIndex(cardInReverseOrder);
 
 
@@ -81,12 +80,3 @@
   function comparison(a, b){
     return a === b ? true : false;
   }
-
-
-
-//Steps:
-//Drop the last digit from the number. The last digit is what we want to check against
-//Reverse the numbers
-//Multiply the digits in odd positions (1, 3, 5, etc.) by 2 and subtract 9 to all any result higher than 9
-//Add all the numbers together
-//The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
