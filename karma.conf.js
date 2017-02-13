@@ -15,8 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/card/za/index.test.js',
-        'src/card/za/index.js'
+      'src/card/za/index.js',
+      'src/card/za/index.test.js'
     ],
 
     plugins : [
