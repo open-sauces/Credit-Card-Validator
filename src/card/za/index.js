@@ -1,13 +1,32 @@
+    // VISA:
+    // 4929120726142066
+    // 4929801157156291
+    // 4716633167891600 - F
+    // 5483860808597696
+    //
+    // Discover:
+    // 6011984164124710
+    // 6011178793209188
+    // 6011552484800572
+
+    // Diners Club - International:
+    // 36735621852788
+    // 36807686827706 - F
+    // 36354975791020
+    //Maestro:
+    // 5020731037160939
+    // 6762672741427638
+    // 5020882549360291
+
 
     //Variables
-    const VISA = [4556737586899855];
+
+    const VISA = [5020882549360291];
     const MASTERCARD = 5483860808597696;
     const AMERICANEXPRESS = 349973529889097;
     const DISCOVER = 6011629506225960;
     const JCB = 3528216329036270;
     const VISAELECTRON = 4508405849060314;
-
-
 
 
     const splitString =  value => String(value).split('');
@@ -43,38 +62,38 @@
     };
 
     function arrayItemsMultiply(value){
-    let splitNumber =  String(value).split('');
-    let calculated = splitNumber.map(function(item){
-      item = Number(item) * 2;
-      if(Number(item) >= 9){
-        item = item - 9;
-      }
-      return item;
-    })
-        return Number(calculated.join(''));
-    }
-
-
-
+        let splitNumber =  String(value).split('');
+        let calculated = splitNumber.map(function(item){
+          item = Number(item) * 2;
+          if(Number(item) >= 10){
+            item = item - 9;
+          }
+          return String(item);
+        })
+        return calculated;
+    };
 
     const validationNumber = Number(getLastCharacter(splitString(VISA)))
     const lastCharRemoved = toString(excludeLastCharacter(splitString(VISA)));
     const charReversed = reverseString(toString(excludeLastCharacter(splitString(VISA))));
-    const oddCharCalculated = splitString(arrayItemsMultiply(toString(getOddIndexesInArray(splitString(reverseString(toString(excludeLastCharacter(splitString(VISA)))))))));
+    const oddCharCalculated = arrayItemsMultiply(toString(getOddIndexesInArray(splitString(reverseString(toString(excludeLastCharacter(splitString(VISA))))))));
     const evenCharCalculated = getEvenIndexesInArray(splitString(reverseString(toString(excludeLastCharacter(splitString(VISA))))));
     const addedEvenOddArray = addArray(oddCharCalculated.concat(evenCharCalculated));
 
     console.log('                ');
+    console.log('lastCharRemoved', lastCharRemoved);
+    console.log('                ');
+    console.log('charReversed', charReversed);
+    console.log('                ');
+    console.log('oddCharCalculated', oddCharCalculated);
+    console.log('                ');
+    console.log('evenCharCalculated', evenCharCalculated);
+    console.log('                ');
+    console.log('addedEvenOddArray', addedEvenOddArray);
+    console.log('                ');
     console.log('VISA Last number', validationNumber);
     console.log('                ');
-        console.log('VISA', VISA);
+    console.log('VISA', VISA);
     console.log('                ');
-    console.log('VISA completed', isComparisonTrue(moduloTen(addedEvenOddArray))(validationNumber));
+    console.log('VISA completed', !!(!moduloTen(add(addedEvenOddArray)(validationNumber))));
     console.log('                ');
-
-
-  // - [x] Drop the last digit from the number. The last digit is what we want to check against
-  // - [x] Reverse the numbers
-  // - [x] Multiply the digits in odd positions (1, 3, 5, etc.) by 2 and subtract 9 to all any result higher than 9
-  // - [x] Add all the numbers together
-  // - [ ] The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
